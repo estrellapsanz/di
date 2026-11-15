@@ -8,17 +8,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.di.demo.models.Product;
-import com.example.di.demo.services.ProductService;
+import com.example.di.demo.services.ProductServiceImpl;
 
 @RestController
 @RequestMapping("/api")
 public class SomeController {
 
-    private ProductService productService = new ProductService();
+    private ProductServiceImpl productService = new ProductServiceImpl();
 
     @GetMapping
     public List<Product> list() {
-        return productService.findAll();
+        return productService.getAllProducts();
     }
 
     @GetMapping("/{id}")
