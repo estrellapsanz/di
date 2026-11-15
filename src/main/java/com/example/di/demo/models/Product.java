@@ -1,6 +1,6 @@
 package com.example.di.demo.models;
 
-public class Product {
+public class Product implements Cloneable {
     private Long id;
     private String name;
     private Long price;
@@ -34,4 +34,16 @@ public class Product {
     public Long getPrice() {
         return price;
     }
+
+    @Override
+    public Object clone() {
+
+        try {
+            return super.clone();
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+            return new Product(id, name, price);
+        }
+    }
+
 }

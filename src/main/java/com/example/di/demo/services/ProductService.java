@@ -11,11 +11,13 @@ public class ProductService {
 
     public List<Product> findAll() {
         return repository.findAll().stream().map( 
-            //mao devuelve un string, por eso hay que convertirlo a una lista
+            //me devuelve un string, por eso hay que convertirlo a una lista
             p-> {
                 Double precioModificado= p.getPrice() * 0.21d;
-                p.setPrice(precioModificado.longValue());
-                return p;
+                //p.setPrice(precioModificado.longValue());
+                Product clonedProduct = (Product) p.clone();
+                clonedProduct.setPrice(precioModificado.longValue());
+                return clonedProduct;
             }).toList();
     }
 
